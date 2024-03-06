@@ -1,0 +1,17 @@
+.modal {
+    position: absolute;
+    inset: 80px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    margin: 0 240px;
+  }
+  
+  .button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
