@@ -1,7 +1,7 @@
 import css from './Loader.module.css';
 import { MutatingDots } from 'react-loader-spinner';
 
-export const Loader = () => {
+export function Loader() {
   return (
     <div>
       <MutatingDots
@@ -17,4 +17,4 @@ export const Loader = () => {
       />
     </div>
   );
-};
+}

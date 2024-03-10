@@ -1,12 +1,14 @@
 import { ImageCard } from '../ImageCard/ImageCard';
 import css from './ImageGallery.module.css';
 
-export const ImageGallery = ({ items }) => {
+export function ImageGallery({ items }) {
   return (
     <ul className={css.container}>
-      {items.map(item => (
-        <ImageCard data={item} key={item.id} />
+      {items.map((item) => (
+        <li key={item.id}>
+          <ImageCard item={item} />
+        </li>
       ))}
     </ul>
   );
-};
+}

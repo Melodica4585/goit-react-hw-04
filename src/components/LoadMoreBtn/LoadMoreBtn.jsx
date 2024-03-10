@@ -1,11 +1,11 @@
 import css from './LoadMoreBtn.module.css';
 
-export const LoadMoreBtn = ({ onPagination }) => {
+export function LoadMoreBtn({ handleLoadMore }) {
   return (
     <div className={css.container}>
-      <button className={css.button} onClick={onPagination}>
+      <button className={css.button} onClick={handleLoadMore}>
         Load more images
       </button>
     </div>
   );
-};
+}
