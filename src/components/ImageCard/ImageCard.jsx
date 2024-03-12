@@ -1,6 +1,6 @@
 import css from './ImageCard.module.css';
 
-export const ImageCard = ({ item }) => {
+export const ImageCard = ({ item, onClickModal }) => {
   return (
         <img
           className={css.img}
@@ -9,6 +9,7 @@ export const ImageCard = ({ item }) => {
           data-id={item.id}
           width= "450"
           height="400"
+          onClick = {() => onClickModal(item.urls.regular)}
         />
   );
 };

@@ -17,9 +17,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const searchImages = async (newQuery) => {
+  const [modalUrl, setModalUrl] = useState("")
+  const [modalAlt, setModalAlt] = useState("")
+  
+  const searchImages = (newQuery) => {
     setQuery(newQuery);
 
     setCurrentPage(1);
@@ -35,9 +36,10 @@ function App() {
       return;
     }
     async function fetchData() {
-      try {
-        setLoading(true);
+      setLoading(true);
         setError(false);
+      try {
+
         const fetchedData = await getImage(query, currentPage);
         setTotalPages(fetchedData.total_pages);
 
@@ -61,19 +63,17 @@ function App() {
   const showLoadMoreBtn =
     images.length > 0 && !loading && currentPage < totalPages;
 
-  const openModal = () => {
+  const openModal = (url, alt) => {
     setIsOpen(true);
+    setModalUrl(url)
+    setModalAlt(alt)
   };
 
   const closeModal = () => {
-    setSelectedImage(null);
     setIsOpen(false);
-  };
-
-  const onClickModal = (id) => {
-    setSelectedImage(images.find((item) => item.id === id));
-    openModal();
-  };
+    setModalUrl("")
+    setModalAlt("")
+  }
 
   return (
     <>
@@ -81,19 +81,18 @@ function App() {
       {loading && <Loader />}
       {error && <ErrorMessage />}
       {images.length > 0 && (
-        <ImageGallery items={images} onClickModal={onClickModal} />
+        <ImageGallery items={images} onClickModal={openModal} />
       )}
       {showLoadMoreBtn && <LoadMoreBtn onClick={loadMore} />}
       <Toaster />
-      {selectedImage && (
         <ImageModal
           isOpen={isOpen}
-          image={selectedImage}
           onCloseModal={closeModal}
+          url={modalUrl}
+          alt={modalAlt}
         />
-      )}
     </>
   );
-}
+      }
 
 export default App;

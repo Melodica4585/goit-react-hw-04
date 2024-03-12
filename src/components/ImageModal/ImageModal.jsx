@@ -1,6 +1,5 @@
 import Modal from 'react-modal';
 import css from './ImageModal.module.css';
-import { BsXLg } from "react-icons/bs";
 
 const modalStyles = {
   content: {
@@ -13,7 +12,7 @@ const modalStyles = {
   },
 };
 
-export const ImageModal = ({ isOpen, image, onCloseModal }) => {
+export const ImageModal = ({ isOpen, onCloseModal, url, alt }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -26,12 +25,10 @@ export const ImageModal = ({ isOpen, image, onCloseModal }) => {
     >
         <img
           className={css.image}
-          src={image.urls.regular}
-          alt={image.alt_description}
+          src={url}
+          alt={alt}
+          onClick={onCloseModal}
         />
-      <button className={css.button} onClick={onCloseModal}>
-        <BsXLg />
-      </button>
     </Modal>
   );
 };

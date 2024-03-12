@@ -6,8 +6,9 @@ export const ImageGallery = ({ items, onClickModal }) => {
     <>
     <ul className={css.container}>
       {items.map((item) => (
-        <li key={item.id} onClick={() => onClickModal(item.id)}>
+        <li key={item.id}>
           <ImageCard item={item} 
+          onClickModal={onClickModal}
           />
         </li>
       ))}
